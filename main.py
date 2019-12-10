@@ -5,7 +5,7 @@ from pygame import mixer
 import time
 import threading
 import mutagen
-import pickle
+i
 
 root = Tk()
 root.title("myTunes")
@@ -45,7 +45,7 @@ subMenuFile.add_command(label="Open file", command=browseFile)
 subMenuFile.add_command(label="Exit", command=exitProgram)
 
 def About():
-    tkinter.messagebox.showinfo('About MyTunes', 'This MP3 Player was created by Eliot Shea for CIS4930 Python!\nThe youtube channel buildwithpython has a tutorial that was incredibly helpful!')
+    tkinter.messagebox.showinfo('About MyTunes', 'This MP3 Player was created by Eliot Shea for CIS4930 Python!')
 
 subMenuHelp = Menu(menuBar, tearoff=0)
 menuBar.add_cascade(label="Help", menu=subMenuHelp)
