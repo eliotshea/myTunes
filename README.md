@@ -19,7 +19,7 @@ Step 1.
 Step 2.
   create empty songs.txt file if none exists
 Step 3.
-  >>>python main.py
+  \>\>\>python main.py
 Step 4.
   locate your favorite audio files and enjoy
 
