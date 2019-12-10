@@ -6,3 +6,6 @@ It plays MP3 files and supports many of the same features as commercial programs
 tracking using threads.
 
 The filepath of every song played is saved in songs.txt and used for keeping track of the user's library
+
+Many of the features I described in my proposal were slightly ambitious, like displaying the metadata in the library list, however I
+feel like I have learned a lot about GUI programming using python.
