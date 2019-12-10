@@ -13,6 +13,10 @@ feel like I have learned a lot about GUI programming using python.
 I consulted many resources to create this project, most notable are StackOverflow, the python and tkinter documentation,
 and the YouTube channel buildwithpython
 
+
+VIDEO: https://youtu.be/ubqy5Z4q27k
+
+
 ++HOW TO RUN++
 
 Step 1.
