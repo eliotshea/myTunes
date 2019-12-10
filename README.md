@@ -15,13 +15,20 @@ and the YouTube channel buildwithpython
 
 ++HOW TO RUN++
 Step 1.
-  Use pip to install dependencies\n
+
+  Use pip to install dependencies
+  
 Step 2.
-  create empty songs.txt file if none exists\n
+
+  create empty songs.txt file if none exists
+  
 Step 3.
-  \>\>\>python main.py\n
+  \>\>\>python main.py
+  
 Step 4.
-  locate your favorite audio files and enjoy\m\n
+
+  locate your favorite audio files and enjoy
+  
 
 DEPENDENCIES:
   pygame
