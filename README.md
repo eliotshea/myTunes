@@ -14,6 +14,7 @@ I consulted many resources to create this project, most notable are StackOverflo
 and the YouTube channel buildwithpython
 
 ++HOW TO RUN++
+
 Step 1.
 
   Use pip to install dependencies
@@ -28,6 +29,8 @@ Step 3.
 Step 4.
 
   locate your favorite audio files and enjoy
+  
+  
   
 
 DEPENDENCIES:
