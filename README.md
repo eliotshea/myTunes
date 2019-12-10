@@ -9,3 +9,6 @@ The filepath of every song played is saved in songs.txt and used for keeping tra
 
 Many of the features I described in my proposal were slightly ambitious, like displaying the metadata in the library list, however I
 feel like I have learned a lot about GUI programming using python.
+
+I consulted many resources to create this project, most notable are StackOverflow, the python and tkinter documentation,
+and the YouTube channel buildwithpython
