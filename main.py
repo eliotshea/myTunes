@@ -5,7 +5,7 @@ from pygame import mixer
 import time
 import threading
 import mutagen
-i
+
 
 root = Tk()
 root.title("myTunes")
