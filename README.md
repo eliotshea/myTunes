@@ -2,6 +2,7 @@
 Simple audio player application build using tkinter python library
 
 Features:
+
 	Versatile audio playback (supports both .mp3 and .wav)
 	Toggle pause/play
 	Keeps track of every song played
