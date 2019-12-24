@@ -6,7 +6,6 @@ import time
 import threading
 import mutagen
 
-
 root = Tk()
 root.title("myTunes")
 root.iconbitmap(r'icon.ico')
@@ -14,13 +13,10 @@ root.iconbitmap(r'icon.ico')
 menuBar = Menu(root)
 root.config(menu=menuBar)
 
-songList = list(set(line.strip() for line in open('songs.txt')))
+songList = list(set(line.strip() for line in open('./songs.txt')))
 songNameList = list()
 for item in songList:
     songNameList.append(item.split('/')[-1])
-
-
-songNameDict = dict.fromkeys(songList, songNameList)
 
 def browseFile():
     global filename, x
@@ -63,46 +59,54 @@ currentLabel.pack(pady=10)
 
 paused = FALSE
 playing = FALSE
+
 def play_music():
     global paused
     global playing
     global filename
+
     if playing:
         if paused:
                 mixer.music.unpause()
                 paused = FALSE
-                playButton['image'] = playPhoto
+                playButton['image'] = pausePhoto
                 statusBar['text'] = filename.split('/')[-1]
         else:
             mixer.music.pause()
             paused = TRUE
-            playButton['image'] = pausePhoto
+            playButton['image'] = playPhoto
             statusBar['text'] = "PAUSED: " + filename.split('/')[-1]
     else:
         if listBoxLabel.curselection():
                 filename = songList[int(listBoxLabel.curselection()[0])]
+                show_details()
                 mixer.music.load(filename)
                 fileLabel['text'] = filename.split('/')[-1]
         mixer.music.play()
         playing = TRUE
-        statusBar['text'] = filename.split('/')[-1]
+        playButton['image'] = pausePhoto
         total_length = get_time()
         t1 = threading.Thread(target=start_count, args=(total_length,))
         t1.start()
         
 def rewind_music():
+    global playing
     mixer.music.rewind()
-    currentLabel['text'] = 'Current Length- 00:00'
+    playing = FALSE
+    currentLabel['text'] = 'Current Time- 00:00'
+    play_music()
 
 def stop_music(): 
     global playing
     global filename
     mixer.music.stop()
     playing = FALSE
+    playButton['image'] = playPhoto
     statusBar['text'] = "Welcome to MyTunes"
-    currentLabel['text'] = 'Current Length- 00:00'
+    currentLabel['text'] = 'Current Time- 00:00'
     shortName = filename.split('/')[-1]
     fileLabel['text'] = "Stopped: " + shortName
+    
     
 
 
@@ -143,10 +147,13 @@ def show_details():
     mins, secs = divmod(total_length, 60)
     time_format = '{:02d}:{:02d}'.format(round(mins), round(secs))
     lengthLabel['text'] = "Total Length- " + time_format
+    statusBar['text'] = filename.split('/')[-1]
+    
     
 def start_count(t_time):
+    global playing
     t_count = int(t_time)
-    while t_count and mixer.music.get_busy():
+    while t_count and playing:
         if paused:
             continue
         else:
@@ -155,6 +162,14 @@ def start_count(t_time):
             currentLabel['text'] = "Current Time- " + time_format
             time.sleep(1)
             t_count -= 1
+
+def listBoxDoubleclickHandle(item):
+    global playing
+    if playing:
+        stop_music()
+    play_music()
+    listBoxLabel.selection_clear(ACTIVE)
+
         
 
 
@@ -191,6 +206,7 @@ for item in songNameList:
     listBoxLabel.insert(x, item)
     x += 1
 listBoxLabel.pack()
+listBoxLabel.bind('<Double-Button-1>', listBoxDoubleclickHandle)
 
 statusBar = Label(root, text="Welcome to MyTunes", relief=SUNKEN, anchor=W)
 statusBar.pack(side=BOTTOM, fill=X)
